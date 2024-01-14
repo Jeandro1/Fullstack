@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="navbar-img navbar-container navbar-top navbar">
+    <div class="nav-item"><a href="index.html">
+        <p class="navbar-text">Home</p>
+      </a></div>
+    <div class="nav-item"><a href="reserveren.html">
+        <p class="navbar-text">Reserveren</p>
+      </a></div>
+    <div class="nav-item"><a href="login.html">
+        <p class="navbar-text">Inloggen</p>
+      </a></div>
+    <div class="nav-item"><a href="register.html">
+        <p class="navbar-text">Registreren</p>
+      </a></div>
+  </div>
+
+  <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+  <form action="response.php" method="post">
+    Voornaam* <br><input type="text" name="voornaam" value=""><br>
+    Achternaam* <br><input type="text" name="achternaam" value=""><br>
+    Straat* <br><input type="text" name="straat" value=""><br>
+    Huisnummer* <br><input type="text" name="huisnummer" value=""><br>
+    Toevoeging <br><input type="text" name="toevoeging" value=""><br>
+    Email-adres* <br><input type="text" name="email-adres" value=""><br>
+    Telefoonnummer* <br><input type="text" name="telefoonnummer" value=""><br>
+    Wachtwoord* <br><input type="password" name="wachtwoord" value=""><br>
+    Herhaal wachtwoord* <br><input type="password" name="herhaalWachtwoord" value=""><br>
+    <input type="submit" name="knop" value="Registreer">
+  </form>
+
+  <a href="login.html">
+    <p class="accountInlogRegistreet">Heb je al een account? Log hier in!</p>
+  </a>
+
+  <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+  <footer>
+    <div class="nav-item"><a href="index.html">
+        <p class="navbar-text">Home</p>
+      </a></div>
+    <div class="nav-item"><a href="reserveren.html">
+        <p class="navbar-text">Reserveren</p>
+      </a></div>
+    <div class="nav-item">
+      <p class="navbar-text">Locatie: Domberg</p>
+    </div>
+  </footer>
+</body>
