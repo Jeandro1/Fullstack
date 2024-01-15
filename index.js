@@ -35,8 +35,37 @@ let bungalow2 = ["Garnaal 2A", "Garnaal 4A", "Garnaal 6A",
     "Kreeft 2D", "Kreeft 4D", "Kreeft 6D",
     "Kreeft Deluxe 2A", "Kreeft Deluxe 4A", "Kreeft Deluxe 6A"];
 
-//-----automatisch elementen maken en filteren-----------------------------------------------------------------------------------------------------------------------
-function filter() {
+function filter1(){
+        var filter2 = document.getElementById("filter2");
+        filter2.style.display = "none";
+    
+        var filter3 = document.getElementById("filter3");
+        filter3.style.display = "block";
+
+        var filterbutton1 = document.getElementById("filterbutton1");
+        filterbutton1.style.display = "none";
+
+        var filterbutton2 = document.getElementById("filterbutton2");
+        filterbutton2.style.display = "block";
+    
+        if (document.getElementById("personen4").checked == true) {
+            document.getElementById("filterelement").style.display = "none";
+            filter2();
+        }
+    
+        if (document.getElementById("personen6").checked == true) {
+            document.getElementById("filterelement").style.display = "none";
+            filter2();
+        }
+    
+        if (document.getElementById("personen8").checked == true) {
+            document.getElementById("slaapkamers2").style.display = "none";
+        }
+}
+
+    //-----automatisch elementen maken en filteren-----------------------------------------------------------------------------------------------------------------------
+
+function filter2() {
 
     document.body.scrollTop = document.documentElement.scrollTop = 300;
 
@@ -129,13 +158,6 @@ function filter() {
 
 
 
-
-        btn1.addEventListener('mouseover', () => {
-            btn1.style.backgroundColor = 'blue';
-        });
-        btn1.addEventListener('mouseout', () => {
-            btn1.style.backgroundColor = 'cornflowerblue';
-        });
 
         btn1.addEventListener('click', () => {
             if (loggedin == true) {
@@ -353,13 +375,6 @@ function filter() {
 
 
 
-        btn2.addEventListener('mouseover', () => {
-            btn2.style.backgroundColor = 'blue';
-        });
-        btn2.addEventListener('mouseout', () => {
-            btn2.style.backgroundColor = 'cornflowerblue';
-        });
-
         btn2.addEventListener('click', () => {
             if (loggedin == true) {
                 //zet hier send to reserveer page
@@ -488,42 +503,7 @@ function filter() {
 
     //-----filter weghalen------------------------------------------------------------------------------------------------------------------------------------------- 
 
-    var filter1 = document.getElementById("filter1");
-    filter1.style.display = "none";
+    var filterElement = document.getElementById("filterelement");
+    filterElement.style.display = "none";
 
-}
-
-function personen4() {
-    if (document.getElementById("personen4").checked == false) {
-        document.getElementById("slaapkamers3").disabled = false;
-        document.getElementById("slaapkamers4").disabled = false;
-    }
-
-    if (document.getElementById("personen6").checked == false) {
-        document.getElementById("slaapkamers2").disabled = false;
-        document.getElementById("slaapkamers4").disabled = false;
-    }
-
-    if (document.getElementById("personen8").checked == false) {
-        document.getElementById("slaapkamers2").disabled = false;
-    }
-
-    if (document.getElementById("personen4").checked == true) {
-        document.getElementById("slaapkamers3").checked = false;
-        document.getElementById("slaapkamers4").checked = false;
-        document.getElementById("slaapkamers3").disabled = true;
-        document.getElementById("slaapkamers4").disabled = true;
-    }
-
-    if (document.getElementById("personen6").checked == true) {
-        document.getElementById("slaapkamers2").checked = false;
-        document.getElementById("slaapkamers4").checked = false;
-        document.getElementById("slaapkamers2").disabled = true;
-        document.getElementById("slaapkamers4").disabled = true;
-    }
-
-    if (document.getElementById("personen8").checked == true) {
-        document.getElementById("slaapkamers2").checked = false;
-        document.getElementById("slaapkamers2").disabled = true;
-    }
 }
