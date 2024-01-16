@@ -154,8 +154,8 @@ function filter2() {
         btn1.addEventListener('click', () => {
             if (loggedin == true) {
                 //zet hier send to reserveer page
+                console.log(bungalow1[i]);
             } else {
-                //zet hier send to login page
                 location.assign(urlLogin);
             };
         });
