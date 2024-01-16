@@ -35,44 +35,36 @@ let bungalow2 = ["Garnaal 2A", "Garnaal 4A", "Garnaal 6A",
     "Kreeft 2D", "Kreeft 4D", "Kreeft 6D",
     "Kreeft Deluxe 2A", "Kreeft Deluxe 4A", "Kreeft Deluxe 6A"];
 
-function filter1(){
-        var filter2 = document.getElementById("filter2");
-        filter2.style.display = "none";
-    
-        var filter3 = document.getElementById("filter3");
-        filter3.style.display = "block";
+function filter1() {
+    document.getElementById("filter2").style.display = "none";
+    document.getElementById("filterbutton1").style.display = "none";
 
-        var filterbutton1 = document.getElementById("filterbutton1");
-        filterbutton1.style.display = "none";
+    if (document.getElementById("personen4").checked == true) {
+        filter2();
+    }
 
-        var filterbutton2 = document.getElementById("filterbutton2");
-        filterbutton2.style.display = "block";
-    
-        if (document.getElementById("personen4").checked == true) {
-            document.getElementById("filterelement").style.display = "none";
-            filter2();
-        }
-    
-        if (document.getElementById("personen6").checked == true) {
-            document.getElementById("filterelement").style.display = "none";
-            filter2();
-        }
-    
-        if (document.getElementById("personen8").checked == true) {
-            document.getElementById("slaapkamers2").style.display = "none";
-        }
+    if (document.getElementById("personen6").checked == true) {
+        document.getElementById("slaapkamers3").checked = true;
+        filter2();
+    }
+
+    if (document.getElementById("personen8").checked == true) {
+        document.getElementById("filter3").style.display = "block";
+        document.getElementById("filterbutton2").style.display = "block";
+    }
 }
 
-    //-----automatisch elementen maken en filteren-----------------------------------------------------------------------------------------------------------------------
+//-----automatisch elementen maken en filteren-----------------------------------------------------------------------------------------------------------------------
 
 function filter2() {
+
+    document.getElementById("filterelement").style.display = "none";
 
     document.body.scrollTop = document.documentElement.scrollTop = 300;
 
     p4 = document.getElementById("personen4").checked;
     p6 = document.getElementById("personen6").checked;
     p8 = document.getElementById("personen8").checked;
-    s2 = document.getElementById("slaapkamers2").checked;
     s3 = document.getElementById("slaapkamers3").checked;
     s4 = document.getElementById("slaapkamers4").checked;
 
@@ -503,7 +495,6 @@ function filter2() {
 
     //-----filter weghalen------------------------------------------------------------------------------------------------------------------------------------------- 
 
-    var filterElement = document.getElementById("filterelement");
-    filterElement.style.display = "none";
+
 
 }
