@@ -353,11 +353,59 @@ function filter2() {
         var btn2 = document.createElement("BUTTON");
 
         btn2.addEventListener('click', () => {
-            alert("loggedin");
+            var form2 = document.createElement('form');
+            form2.action = 'xreserveer.php';
+
+
+            var reserveerNaam = document.createElement('div6');
+            reserveerNaam.innerHTML = "Reservering voor:" + bungalow2[i] + "<br>" + "<br>";
+
+
+            var inputAankomst = document.createElement('input');
+            inputAankomst.type = 'date';
+            inputAankomst.name = 'aankomst';
+            inputAankomst.placeholder = 'Aankomst';
+
+
+            var inputVertrek = document.createElement('input');
+            inputVertrek.type = 'date';
+            inputVertrek.name = 'vertrek';
+            inputVertrek.placeholder = 'Vertrek';
+
+
+            var inputAantalGasten = document.createElement('input');
+            inputAantalGasten.type = 'text';
+            inputAantalGasten.name = 'aantalgasten';
+            inputAantalGasten.placeholder = 'Aantal gasten';
+
+
+            var buttonReserveer = document.createElement('input');
+            buttonReserveer.type = 'submit';
+            buttonReserveer.name = 'submit';
+            buttonReserveer.value = 'Reserveer nu';
+
+
+            var inputBungalow = document.createElement('input');
+            inputBungalow.type = 'text';
+            inputBungalow.name = 'bungalow';
+            inputBungalow.value = bungalow2[i];
+            inputBungalow.style.display = "none";
+
+
+            form2.appendChild(reserveerNaam);
+            form2.appendChild(inputAankomst);
+            form2.appendChild(inputVertrek);
+            form2.appendChild(inputAantalGasten);
+            form2.appendChild(buttonReserveer);
+            form2.appendChild(inputBungalow);
+
+
+            document.getElementById("main2").appendChild(form2);
         });
 
         document.getElementById("main2").appendChild(btn2);
         btn2.innerHTML = "Reserveer nu " + bungalow2[i];
+
 
         //-----personen en slaapkamers filteren-------------------------------------------------------------------------------------------------------------------------------------------  
 

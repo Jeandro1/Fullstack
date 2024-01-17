@@ -32,7 +32,7 @@
   </form>
 
   <a href="register.php">
-    <p class="accountInlogRegistreet">Heb je nog geen account? Registreer je hier!</p>
+    <p class="blacktext">Heb je nog geen account? Registreer je hier!</p>
   </a>
 
   <!-- ----------------------------------------------------------------------------------------------------------- -->

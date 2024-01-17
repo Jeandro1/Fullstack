@@ -41,7 +41,7 @@
   </form>
 
   <a href="login.php">
-    <p class="accountInlogRegistreet">Heb je al een account? Log hier in!</p>
+    <p class="blacktext">Heb je al een account? Log hier in!</p>
   </a>
 
   <!-- ----------------------------------------------------------------------------------------------------------- -->

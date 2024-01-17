@@ -66,10 +66,10 @@ try{
         echo "Account deleted successfully";
         echo '<br>' . '<a href="register.php">Naar de inlogpagina</a>';
     }    
-        
+    
 }
 catch(PDOExeption $e) {
-    echo "Connection failed!: ";
+    echo "Connection failed!";
 }
 
 

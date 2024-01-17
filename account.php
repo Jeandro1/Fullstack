@@ -30,6 +30,10 @@ if(isset($_SESSION["email"])){
     
         <!-- ----------------------------------------------------------------------------------------------------------- -->
     
+        <p class="blacktext">Reserveringen:</p>
+
+        <br>
+
         <form action="response.php" method="post">
         <input type="submit" name="delete" value="Delete account">
         </form>
