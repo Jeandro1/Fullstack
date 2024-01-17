@@ -1,6 +1,6 @@
 var urlLogin = "login.php";
 var prijs;
-var text1;
+
 var personenSlaapkamers;
 var voorzieningen;
 var text1 = "Inclusief belasting en toeslagen";
