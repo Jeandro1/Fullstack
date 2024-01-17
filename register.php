@@ -12,16 +12,13 @@
 
 <body>
   <div class="navbar-img navbar-container navbar-top navbar">
-    <div class="nav-item"><a href="index.html">
-        <p class="navbar-text">Home</p>
-      </a></div>
-    <div class="nav-item"><a href="reserveren.html">
+    <div class="nav-item"><a href="index.php">
         <p class="navbar-text">Reserveren</p>
       </a></div>
-    <div class="nav-item"><a href="login.html">
+    <div class="nav-item"><a href="login.php">
         <p class="navbar-text">Inloggen</p>
       </a></div>
-    <div class="nav-item"><a href="register.html">
+    <div class="nav-item"><a href="register.php">
         <p class="navbar-text">Registreren</p>
       </a></div>
   </div>
@@ -36,24 +33,21 @@
     Huisnummer* <br><input type="text" name="huisnummer" value=""><br>
     Toevoeging <br><input type="text" name="toevoeging" value=""><br>
     Plaats* <br><input type="text" name="plaats" value=""><br>
-    Email-adres* <br><input type="text" name="email-adres" value=""><br>
+    Email-adres* <br><input type="text" name="email" value=""><br>
     Telefoonnummer* <br><input type="text" name="telefoonnummer" value=""><br>
     Wachtwoord* <br><input type="password" name="wachtwoord" value=""><br>
     Herhaal wachtwoord* <br><input type="password" name="herhaalWachtwoord" value=""><br>
-    <input type="submit" name="knop" value="Registreer">
+    <input type="submit" name="registreer" value="Registreer">
   </form>
 
-  <a href="login.html">
+  <a href="login.php">
     <p class="accountInlogRegistreet">Heb je al een account? Log hier in!</p>
   </a>
 
   <!-- ----------------------------------------------------------------------------------------------------------- -->
 
   <footer>
-    <div class="nav-item"><a href="index.html">
-        <p class="navbar-text">Home</p>
-      </a></div>
-    <div class="nav-item"><a href="reserveren.html">
+    <div class="nav-item"><a href="index.php">
         <p class="navbar-text">Reserveren</p>
       </a></div>
     <div class="nav-item">

@@ -148,7 +148,7 @@ function filter2() {
         var btn1 = document.createElement("BUTTON");
 
         btn1.addEventListener('click', () => {
-            location.assign(urlLogin);
+            alert("loggedin");
         });
 
         document.getElementById("main1").appendChild(btn1);
@@ -353,7 +353,7 @@ function filter2() {
         var btn2 = document.createElement("BUTTON");
 
         btn2.addEventListener('click', () => {
-            location.assign(urlLogin);
+            alert("loggedin");
         });
 
         document.getElementById("main2").appendChild(btn2);

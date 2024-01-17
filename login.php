@@ -12,16 +12,13 @@
 
 <body>
   <div class="navbar-img navbar-container navbar-top navbar">
-    <div class="nav-item"><a href="index.html">
-        <p class="navbar-text">Home</p>
-      </a></div>
-    <div class="nav-item"><a href="reserveren.html">
+    <div class="nav-item"><a href="index.php">
         <p class="navbar-text">Reserveren</p>
       </a></div>
-    <div class="nav-item"><a href="login.html">
+    <div class="nav-item"><a href="login.php">
         <p class="navbar-text">Inloggen</p>
       </a></div>
-    <div class="nav-item"><a href="register.html">
+    <div class="nav-item"><a href="register.php">
         <p class="navbar-text">Registreren</p>
       </a></div>
   </div>
@@ -29,22 +26,19 @@
   <!-- ----------------------------------------------------------------------------------------------------------- -->
 
   <form action="response.php" method="post">
-    Email-adres <br><input type="text" name="email-adres" value=""><br>
+    Email-adres <br><input type="text" name="email" value=""><br>
     Wachtwoord <br><input type="password" name="wachtwoord" value=""><br>
-    <input type="submit" name="knop" value="Log in">
+    <input type="submit" name="login" value="Log in">
   </form>
 
-  <a href="register.html">
+  <a href="register.php">
     <p class="accountInlogRegistreet">Heb je nog geen account? Registreer je hier!</p>
   </a>
 
   <!-- ----------------------------------------------------------------------------------------------------------- -->
 
   <footer>
-    <div class="nav-item"><a href="index.html">
-        <p class="navbar-text">Home</p>
-      </a></div>
-    <div class="nav-item"><a href="reserveren.html">
+    <div class="nav-item"><a href="index.php">
         <p class="navbar-text">Reserveren</p>
       </a></div>
     <div class="nav-item">
