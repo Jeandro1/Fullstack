@@ -49,7 +49,7 @@ try{
                         VALUES ('$voornaam', '$tussenvoegsels', '$achternaam', '$straat', '$huisnummer', '$toevoeging', '$plaats', '$email', '$telefoonnummer', '$wachtwoord')";
                 $conn->exec($sql);
                 echo "New record created successfully";
-                echo '<br>' . '<a href="register.php">Naar de inlogpagina</a>';
+                echo '<br>' . '<a href="login.php">Naar de inlogpagina</a>';
 
             }
             else{
