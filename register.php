@@ -16,10 +16,10 @@
         <p class="navbar-text">Reserveren</p>
       </a></div>
     <div class="nav-item"><a href="login.php">
-        <p class="navbar-text">Inloggen</p>
+       <p class="navbar-text">Inloggen</p>
       </a></div>
     <div class="nav-item"><a href="register.php">
-        <p class="navbar-text">Registreren</p>
+         <p class="navbar-text">Registreren</p>  
       </a></div>
   </div>
 

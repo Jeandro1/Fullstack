@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["email"]) == "jeandro@email.com"){
+if(isset($_SESSION["email"]) === "jeandro@email.com"){
     echo '
     <!DOCTYPE html>
     <html lang="en">
@@ -89,6 +89,10 @@ else{
             echo "gebruiker";
             echo '
             <br>
+
+            <form action="response.php" method="post">
+            <input type="submit" name="delete" value="Delete account">
+            </form>
         
             <!-- ----------------------------------------------------------------------------------------------------------- -->
         
