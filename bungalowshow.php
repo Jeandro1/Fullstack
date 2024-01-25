@@ -23,14 +23,24 @@ if(!isset($_SESSION["loggedin"])){
 <body>
     <div class="navbar-img navbar-container navbar-top navbar">
         <?php
-        if($_SESSION["email"] == "jeandro@email.com"){
-            echo '<div class="nav-item"><a href="bungalow.php">
+        if($_SESSION["email"] == "admin@admin.com"){
+            echo '<div class="nav-item"><a href="bungalowcreate.php">
                       <p class="navbar-text">Bungalow aanmaken</p>
                   </a></div>';
         }
+        if($_SESSION["email"] == "admin@admin.com"){
+            echo '<div class="nav-item"><a href="bungalowtypecreate.php">
+                      <p class="navbar-text">Bungalow type aanmaken</p>
+                  </a></div>';
+        }
+        if($_SESSION["email"] == "admin@admin.com"){
+            echo '<div class="nav-item"><a href="bungalowvoorzieningcreate.php">
+                      <p class="navbar-text">Bungalow voorziening aanmaken</p>
+                  </a></div>';
+        }
         ?>
-        <div class="nav-item"><a href="index.php">
-                <p class="navbar-text">Reserveren</p>
+        <div class="nav-item"><a href="bungalowshow.php">
+                <p class="navbar-text">Bungalows</p>
             </a></div>
         <div class="nav-item"><a href="account.php">
                 <p class="navbar-text">Account</p>
@@ -40,18 +50,18 @@ if(!isset($_SESSION["loggedin"])){
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
     <br>
+
     <br>
         
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
     <footer>
                 
-        <div class="nav-item"><a href="index.php">
-                <p class="navbar-text">Reserveren</p>
+        <div class="nav-item"><a href="bungalowshow.php">
+                <p class="navbar-text">Bungalows</p>
             </a></div>
         <div class="nav-item">
             <p class="navbar-text">Locatie: Domberg</p>
         </div>
     </footer>
 </body>
-

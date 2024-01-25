@@ -22,9 +22,9 @@ if(isset($_SESSION["loggedin"])){
 
 <body>
   <div class="navbar-img navbar-container navbar-top navbar">
-    <div class="nav-item"><a href="index.php">
-        <p class="navbar-text">Reserveren</p>
-      </a></div>
+  <div class="nav-item"><a href="index.php">
+            <p class="navbar-text">Home</p>
+        </a></div>
     <div class="nav-item"><a href="login.php">
        <p class="navbar-text">Inloggen</p>
       </a></div>
@@ -34,6 +34,8 @@ if(isset($_SESSION["loggedin"])){
   </div>
 
   <!-- ----------------------------------------------------------------------------------------------------------- -->
+
+  <br>
 
   <form action="register.php" method="post">
     Voornaam* <br><input type="text" name="voornaam" value=""><br>
@@ -71,7 +73,7 @@ if(isset($_POST["registreer"])){
           $email = $_REQUEST["email"];
           $telefoonnummer = $_REQUEST["telefoonnummer"];
           $wachtwoord = $_REQUEST["wachtwoord"];
-          $sqlregister = $conn->prepare("INSERT INTO users (voornaam, tussenvoegsels, achternaam, straat, huisnummer, toevoeging, plaats, email, telefoonnummer, wachtwoord)
+          $sqlregister = $conn->prepare("INSERT INTO Users (voornaam, tussenvoegsels, achternaam, straat, huisnummer, toevoeging, plaats, email, telefoonnummer, wachtwoord)
                   VALUES ('$voornaam', '$tussenvoegsels', '$achternaam', '$straat', '$huisnummer', '$toevoeging', '$plaats', '$email', '$telefoonnummer', '$wachtwoord')");
           $sqlregister->execute();
           echo "New account created successfully";
@@ -86,12 +88,14 @@ if(isset($_POST["registreer"])){
 }
 ?>
 
+  <br>
+
   <!-- ----------------------------------------------------------------------------------------------------------- -->
 
   <footer>
-    <div class="nav-item"><a href="index.php">
-        <p class="navbar-text">Reserveren</p>
-      </a></div>
+  <div class="nav-item"><a href="index.php">
+                <p class="navbar-text">Home</p>
+            </a></div>
     <div class="nav-item">
       <p class="navbar-text">Locatie: Domberg</p>
     </div>
