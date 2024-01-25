@@ -1,52 +1,25 @@
 <?php
 include('db.php');
 session_start();
-<<<<<<< Updated upstream
 
 if(!isset($_SESSION["loggedin"])){
     header("location:login.php");
 }  
 
-//uitloggen
-
-if(isset($_POST["logout"])){
-    session_destroy();
-    header("location:login.php");
-}
-
-//account verwijderen
-
-if(isset($_POST["delete"])){
-    $emaildelete = $_SESSION["email"];
-    $accountdelete = $conn->prepere("DELETE FROM Users WHERE email = '$emaildelete'");      
-    $accountdelete->execute();
-    echo "Account deleted successfully";
-    echo '<br>' . '<a href="register.php">Naar de inlogpagina</a>';
-    sleep(2);
-    header("location:login.php");
-}       
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-=======
-if(isset($_SESSION["email"])){
-    echo '
-    <!DOCTYPE html>
-    <html lang="en">
->>>>>>> Stashed changes
-    
+        
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account - Vakantiepark Verwoerd</title>
+    <title>Home - Vakantiepark Verwoerd</title>
     <link rel="icon" type="image/png" href="images/Vlogo.png">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
-    
+        
 <body>
     <div class="navbar-img navbar-container navbar-top navbar">
         <?php
@@ -73,36 +46,37 @@ if(isset($_SESSION["email"])){
                 <p class="navbar-text">Account</p>
             </a></div>
     </div>
-    
-        <!-- ----------------------------------------------------------------------------------------------------------- -->
-    
+        
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+        
     <br>
-
-    <?php echo $_SESSION['email'];?>
-
-    <br><br>
-
-    <form action="account.php" method="post">
-        <input type="submit" name="logout" value="Uitloggen">
-    </form>
-
-    <br><br><br><br>
-
-    <form action="account.php" method="post">
-        <input type="submit" name="delete" value="Delete account">
-    </form>
-
+<?php
+    $result = $conn->query("SELECT * FROM Bungalows");
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+         //   echo $row['foto'] . '<br>';
+            echo $row['naam'] . '<br>';
+            echo $row['prijs'] . '<br>';
+            $resulttype = $conn->query("SELECT Type.type FROM Type INNER JOIN Bungalows ON Bungalows.idBungalow=idType;");
+                while ($row = $resulttype->fetch(PDO::FETCH_ASSOC)) {
+                   echo $row['type'] . '<br>';
+                }
+            $resultvoorzieningen = $conn->query("SELECT Voorzieningen.voorzieningen FROM Voorzieningen INNER JOIN BungalowsVoorzieningen ON idBungalow=idVoorzieningen;");
+                while ($row = $resultvoorzieningen->fetch(PDO::FETCH_ASSOC)) {
+                   echo $row['voorzieningen'] . '<br>';
+                }
+        }
+?>
     <br>
-    
-        <!-- ----------------------------------------------------------------------------------------------------------- -->
-    
+        
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+        
     <footer>
-            
-    <div class="nav-item"><a href="bungalowshow.php">
+                
+        <div class="nav-item"><a href="bungalowshow.php">
                 <p class="navbar-text">Bungalows</p>
             </a></div>
         <div class="nav-item">
-                <p class="navbar-text">Locatie: Domberg</p>
-            </div>
+            <p class="navbar-text">Locatie: Domberg</p>
+        </div>
     </footer>
 </body>

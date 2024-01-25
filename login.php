@@ -13,7 +13,7 @@ if(isset($_POST["login"])){
         header("location:login.php");
     }
     else{
-        $statement = $conn->prepare("SELECT * FROM users WHERE email = :email AND wachtwoord = :wachtwoord");
+        $statement = $conn->prepare("SELECT * FROM Users WHERE email = :email AND wachtwoord = :wachtwoord");
         $statement->execute(array('email' => $_POST["email"], 'wachtwoord' => $_POST["wachtwoord"]));
         $count = $statement->rowCount();
         if($count > 0){
@@ -46,7 +46,7 @@ if(isset($_POST["login"])){
 <body>
     <div class="navbar-img navbar-container navbar-top navbar">
         <div class="nav-item"><a href="index.php">
-            <p class="navbar-text">Reserveren</p>
+            <p class="navbar-text">Home</p>
         </a></div>
         <div class="nav-item"><a href="login.php">
             <p class="navbar-text">Inloggen</p>
@@ -59,6 +59,7 @@ if(isset($_POST["login"])){
     <!-- ----------------------------------------------------------------------------------------------------------- -->
 
     <br>
+
     <form action="login.php" method="post">
     Email-adres <br><input type="text" name="email" value=""><br>
     Wachtwoord <br><input type="password" name="wachtwoord" value=""><br>
@@ -68,14 +69,15 @@ if(isset($_POST["login"])){
     <a href="register.php">
     <p class="blacktext">Heb je nog geen account? Registreer je hier!</p>
     </a>
+
     <br>
 
     <!-- ----------------------------------------------------------------------------------------------------------- -->
 
     <footer>
         <div class="nav-item"><a href="index.php">
-            <p class="navbar-text">Reserveren</p>
-        </a></div>
+                <p class="navbar-text">Home</p>
+            </a></div>
         <div class="nav-item">
             <p class="navbar-text">Locatie: Domberg</p>
         </div>
