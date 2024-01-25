@@ -50,7 +50,22 @@ if(!isset($_SESSION["loggedin"])){
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
     <br>
-
+<?php
+    $result = $conn->query("SELECT * FROM Bungalows");
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+         //   echo $row['foto'] . '<br>';
+            echo $row['naam'] . '<br>';
+            echo $row['prijs'] . '<br>';
+            $resulttype = $conn->query("SELECT Type.type FROM Type INNER JOIN Bungalows ON Bungalows.idBungalow=idType;");
+                while ($row = $resulttype->fetch(PDO::FETCH_ASSOC)) {
+                   echo $row['type'] . '<br>';
+                }
+            $resultvoorzieningen = $conn->query("SELECT Voorzieningen.voorzieningen FROM Voorzieningen INNER JOIN BungalowsVoorzieningen ON idBungalow=idVoorzieningen;");
+                while ($row = $resultvoorzieningen->fetch(PDO::FETCH_ASSOC)) {
+                   echo $row['voorzieningen'] . '<br>';
+                }
+        }
+?>
     <br>
         
 <!-- ----------------------------------------------------------------------------------------------------------- -->
