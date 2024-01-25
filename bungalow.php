@@ -1,6 +1,7 @@
 <?php
 include('db.php');
 session_start();
+<<<<<<< Updated upstream
 
 if(!isset($_SESSION["loggedin"])){
     header("location:login.php");
@@ -14,6 +15,28 @@ if($_SESSION["email"] !== "jeandro@email.com"){
 
 <!DOCTYPE html>
 <html lang="en">
+=======
+$u = "agatat_user";
+$p = "d@t@b@se123";
+$hostname = "agatat-schooldatabse.db.transip.me";
+$dbname = "agatat_schooldatabse";
+
+try{
+    $conn = new PDO("mysql:host={$hostname};dbname={$dbname};port=3306", $u, $p);
+
+    $vSth = $conn->prepare("SELECT * FROM voorzieningen WHERE idBungalow_voorzieningen = '0'");
+    $vSth->execute();
+    $vCount = $vSth->rowCount();
+
+    $bSth = $conn->prepare("SELECT * FROM bungalows");
+    $bSth->execute();
+    $bCount = $bSth->rowCount();
+
+if(isset($_SESSION["email"])){
+    echo '
+    <!DOCTYPE html>
+    <html lang="en">
+>>>>>>> Stashed changes
     
 <head>
     <meta charset="UTF-8">
@@ -43,9 +66,15 @@ if($_SESSION["email"] !== "jeandro@email.com"){
     
         <!-- ----------------------------------------------------------------------------------------------------------- -->
     
+<<<<<<< Updated upstream
     <br>
     Maak bungalow aan:
     <br><br><form action="response.php" method="post">
+=======
+        <br>
+        Maak bungalow aan:
+        <br><br><form action="response.php" method="post">
+>>>>>>> Stashed changes
                 Naam: <br><input type="text" name="naamBungalow" value=""><br>
                 <select id="typeBungalow" name="typeBungalow">
                     <option value="garnaal">Garnaal</option>
@@ -56,12 +85,18 @@ if($_SESSION["email"] !== "jeandro@email.com"){
                 <input type="submit" name="createBungalow" value="Maak bungalow">
               </form><br>
 
+<<<<<<< Updated upstream
                 Maak voorziening aan:
                 <br><br><form action="response.php" method="post">
+=======
+        Maak voorziening aan:
+        <br><br><form action="response.php" method="post">
+>>>>>>> Stashed changes
                 Voorziening: <br><input type="text" name="naamVoorziening" value=""><br>
                 <input type="submit" name="createVoorziening" value="Maak voorziening">
               </form><br><br><br><br>
 
+<<<<<<< Updated upstream
                 Voeg bungalow toe aan reserveer pagina:
             <br><br><form action="response.php" method="post">
                 Naam: <br>
@@ -75,6 +110,41 @@ if($_SESSION["email"] !== "jeandro@email.com"){
                 <input type="checkbox" id="voorzieningenBungalow" name="voorzieningenBungalow" value="">
                 <label for="voorzieningenBungalow"></label><br>
              
+=======
+        Voeg bungalow toe aan reserveer pagina:
+        <br><br><form action="response.php" method="post">
+                Naam: <br>
+                <select id="naamOnline" name="naamOnline">
+                ';
+
+                for ($i = 1; $i <= $bCount; $i++) {
+
+                    $xbSth = $conn->prepare("SELECT * FROM bungalows WHERE idBungalow = '$i'");
+                    $xbSth->execute();
+                    $xxbSth = $xbSth->fetch();
+                    
+                    echo '<option value="' . $xxbSth['naam'] . '">' . $xxbSth['naam'] . '</option>';
+                }
+
+                echo '
+                </select><br><br>
+                Prijs: <br>
+                <input type="text" name="prijsBungalow" value=""><br><br>
+                Voorzieningen: <br>
+                ';
+
+                for ($i = 1; $i <= $vCount; $i++) {
+                    
+                    $xvSth = $conn->prepare("SELECT * FROM voorzieningen WHERE idBungalow_voorzieningen ='0'");
+                    $xvSth->execute();
+                    $xxvSth = $xvSth->fetch();
+                    
+                    echo '<input type="checkbox" id="voorzieningenBungalow'.$i.'" name="voorzieningenBungalow'.$i.'" value=' . $xxvSth['voorziening['.$i.']'] . '>
+                          <label for="voorzieningenBungalow'.$i.'">' . $xxvSth['voorziening['.$i.']'] . '</label><br>';
+                }
+
+                echo '
+>>>>>>> Stashed changes
                 <br><br>
                 Foto: <br>
                 <input type="file" name="fotoBungalow">
@@ -95,4 +165,20 @@ if($_SESSION["email"] !== "jeandro@email.com"){
                 <p class="navbar-text">Locatie: Domberg</p>
             </div>
         </footer>
+<<<<<<< Updated upstream
     </body>
+=======
+    </body>
+    
+    <script src="script.js"></script>
+    ';
+}
+else{
+    header("location:login.php");
+}
+}
+catch(PDOExeption $e) {
+    echo "Connection failed!";
+}
+?>
+>>>>>>> Stashed changes

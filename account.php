@@ -1,6 +1,7 @@
 <?php
 include('db.php');
 session_start();
+<<<<<<< Updated upstream
 
 if(!isset($_SESSION["loggedin"])){
     header("location:login.php");
@@ -30,6 +31,12 @@ if(isset($_POST["delete"])){
 
 <!DOCTYPE html>
 <html lang="en">
+=======
+if(isset($_SESSION["email"])){
+    echo '
+    <!DOCTYPE html>
+    <html lang="en">
+>>>>>>> Stashed changes
     
 <head>
     <meta charset="UTF-8">
