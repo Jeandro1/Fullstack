@@ -10,6 +10,8 @@ if (isset($_POST['addVoorziening'])) {
     $newVoorziening = $_POST['newVoorziening'];
 
     $stmt = $conn->prepare("INSERT INTO Voorzieningen (voorzieningen) VALUES ('$newVoorziening')");
+    $autoincrement = $conn->prepare("ALTER TABLE Voorzieningen AUTO_INCREMENT =1;");
+    $autoincrement->execute();
     $stmt->execute();
     echo "Nieuwe voorziening toegevoegd!";
     $stmt->close();

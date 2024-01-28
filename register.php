@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
 include('db.php');
 session_start();
 
@@ -9,13 +8,6 @@ if(isset($_SESSION["loggedin"])){
 
 ?>
 
-=======
-session_start();
-if(isset($_SESSION["email"])){
-session_destroy();
-}
-echo '
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 

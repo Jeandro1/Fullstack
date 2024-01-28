@@ -30,6 +30,9 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(3, $foto, PDO::PARAM_LOB);
     $stmt->bindParam(4, $typeID);
     
+    $autoincrement = $conn->prepare("ALTER TABLE Bungalows AUTO_INCREMENT =1;");
+    $autoincrement->execute();
+
     $stmt->execute();
 
     $bungalowID = $conn->lastInsertId();

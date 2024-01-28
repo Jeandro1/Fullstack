@@ -1,99 +1,19 @@
 <?php
 include('db.php');
 session_start();
-<<<<<<< Updated upstream
 
-if(!isset($_SESSION["loggedin"])){
-    header("location:login.php");
-}  
+$result = $conn->query("SELECT Bungalows.naam, Bungalows.prijs, Bungalows.foto, Type.type, GROUP_CONCAT(Voorzieningen.voorzieningen) as voorzieningen
+FROM Bungalows
+INNER JOIN Type ON Bungalows.idType = Type.idType
+LEFT JOIN BungalowVoorzieningen ON Bungalows.idBungalow = BungalowVoorzieningen.idBungalow
+LEFT JOIN Voorzieningen ON BungalowVoorzieningen.idVoorzieningen = Voorzieningen.idVoorzieningen
+GROUP BY Bungalows.idBungalow
+");
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-=======
-$u = "agatat_user";
-$p = "d@t@b@se123";
-$hostname = "agatat-schooldatabse.db.transip.me";
-$dbname = "agatat_schooldatabse";
-
-try{
-    $conn = new PDO("mysql:host={$hostname};dbname={$dbname};port=3306", $u, $p);
-
-    $Sth = $conn->prepare("SELECT * FROM bungalows");
-    $Sth->execute();
-    $Count = $Sth->rowCount();
-
-if(isset($_SESSION["email"])){
-    echo '
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home - Vakantiepark Verwoerd</title>
-        <link rel="icon" type="image/png" href="Vlogo.png">
-        <link rel="stylesheet" href="stylesheet.css">
-    </head>
-    
-    <body>
-        <div class="navbar-img navbar-container navbar-top navbar">
-            <div class="nav-item"><a href="bungalow.php">
-                    <p class="navbar-text">Bungalow aanmaken</p>
-                </a></div>
-            <div class="nav-item"><a href="index.php">
-                    <p class="navbar-text">Reserveren</p>
-                </a></div>
-            <div class="nav-item"><a href="account.php">
-                    <p class="navbar-text">Account</p>
-                </a></div>
-            <div class="nav-item"><a href="login.php">
-                    <p class="navbar-text">Uitloggen</p>
-            </a></div>
-        </div>
-    
-        <!-- ----------------------------------------------------------------------------------------------------------- -->
-    
-        <br>';
-        for ($i = 0; $i <= $Count; $i++) {
-        foreach($conn->query("SELECT * FROM bungalows WHERE prijs IS NOT NULL AND idBungalow = '$i'") as $row){
-        echo $row['naam'] . '<br>';
-        echo $row['bungalowtype'] . '<br>';
-        echo $row['prijs'] . '<br>' . '<br>';
-          foreach($conn->query("SELECT * FROM voorzieningen WHERE idBungalow_voorzieningen = '$i'") as $row2){
-            echo $row2['voorziening'] . '<br>';
-            }
-            echo '<br>' . '<br>' . '<br>' . '<br>';
-        }
-        }
-
-        echo '
-        <br>
-    
-        <!-- ----------------------------------------------------------------------------------------------------------- -->
-    
-        <footer>
-            
-            <div class="nav-item"><a href="index.php">
-                    <p class="navbar-text">Reserveren</p>
-                </a></div>
-            <div class="nav-item">
-                <p class="navbar-text">Locatie: Domberg</p>
-            </div>
-        </footer>
-    </body>
-    
-    <script src="script.js"></script>
-    ';
-}
-else{
-    if(isset($_SESSION["email"])){
-        echo '
-        <!DOCTYPE html>
-        <html lang="en">
->>>>>>> Stashed changes
         
 <head>
     <meta charset="UTF-8">
@@ -105,51 +25,47 @@ else{
 </head>
         
 <body>
-    <div class="navbar-img navbar-container navbar-top navbar">
-        <?php
-        if($_SESSION["email"] == "jeandro@email.com"){
-            echo '<div class="nav-item"><a href="bungalow.php">
-                      <p class="navbar-text">Bungalow aanmaken</p>
-                  </a></div>';
-        }
-        ?>
+<div class="navbar-img navbar-container navbar-top navbar">
         <div class="nav-item"><a href="index.php">
-                <p class="navbar-text">Reserveren</p>
-            </a></div>
-        <div class="nav-item"><a href="account.php">
-                <p class="navbar-text">Account</p>
-            </a></div>
+            <p class="navbar-text">Home</p>
+        </a></div>
+        <div class="nav-item"><a href="login.php">
+            <p class="navbar-text">Inloggen</p>
+        </a></div>
+        <div class="nav-item"><a href="register.php">
+            <p class="navbar-text">Registreren</p>
+        </a></div>
     </div>
         
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
-<<<<<<< Updated upstream
+<br>
+    <div class="outlinepage">
+    <?php if (isset($result) && $result->rowCount() > 0): ?>
+        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+              <table>
+                <th>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($row['foto']); ?>" width="600" class="fotobungalow">
+                    <p class="showtextprijs"><?= $row['prijs']; ?></p>
+                    <p class="showtextbent">Inclusief belasting en toeslagen</p>
+                    <p class="showtextnaam"><?= $row['naam']; ?></p>
+                    <p class="showtexttenv"><?= $row['type']; ?></p>
+                    <p class="showtexttenv"><?= $row['voorzieningen']; ?></p>
+                    <button class="reserveerknop">Reserveer</button>
+                </th>    
+              </table>
+                  
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>Geen bungalows gevonden.</p>
+    <?php endif; ?>
+    </div>  
     <br>
-    <br>
-=======
-            <br>';
-
-            for ($i = 0; $i <= $Count; $i++) {
-            foreach($conn->query("SELECT * FROM bungalows WHERE prijs IS NOT NULL AND idBungalow = '$i'") as $row){
-            echo $row['naam'] . '<br>';
-            echo $row['bungalowtype'] . '<br>';
-            echo $row['prijs'] . '<br>' . '<br>';
-              foreach($conn->query("SELECT * FROM voorzieningen WHERE idBungalow_voorzieningen = '$i'") as $row2){
-                echo $row2['voorziening'] . '<br>';
-                }
-                echo '<br>' . '<br>' . '<br>' . '<br>';
-            }
-            }
-    
-            echo '
-            <br>
->>>>>>> Stashed changes
         
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
     <footer>
                 
-<<<<<<< Updated upstream
         <div class="nav-item"><a href="index.php">
                 <p class="navbar-text">Reserveren</p>
             </a></div>
@@ -159,83 +75,3 @@ else{
     </footer>
 </body>
 
-=======
-                <div class="nav-item"><a href="index.php">
-                        <p class="navbar-text">Reserveren</p>
-                    </a></div>
-                <div class="nav-item">
-                    <p class="navbar-text">Locatie: Domberg</p>
-                </div>
-            </footer>
-        </body>
-        
-        <script src="script.js"></script>
-        ';
-    }
-    else{
-        echo '
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Reserveren - Vakantiepark Verwoerd</title>
-            <link rel="icon" type="image/png" href="Vlogo.png">
-            <link rel="stylesheet" href="stylesheet.css">
-        </head>
-
-        <body>
-            <div class="navbar-img navbar-container navbar-top navbar">
-                <div class="nav-item"><a href="index.php">
-                    <p class="navbar-text">Reserveren</p>
-                </a></div>
-                <div class="nav-item"><a href="login.php">
-                    <p class="navbar-text">Inloggen</p>
-                </a></div>
-                <div class="nav-item"><a href="register.php">
-                    <p class="navbar-text">Registreren</p>
-                </a></div>
-            </div>
-
-    <!-- ----------------------------------------------------------------------------------------------------------- -->
-
-    <br>';
-    
-        for ($i = 0; $i <= $Count; $i++) {
-        foreach($conn->query("SELECT * FROM bungalows WHERE prijs IS NOT NULL AND idBungalow = '$i'") as $row){
-        echo $row['naam'] . '<br>';
-        echo $row['bungalowtype'] . '<br>';
-        echo $row['prijs'] . '<br>' . '<br>';
-          foreach($conn->query("SELECT * FROM voorzieningen WHERE idBungalow_voorzieningen = '$i'") as $row2){
-            echo $row2['voorziening'] . '<br>';
-            }
-            echo '<br>' . '<br>' . '<br>' . '<br>';
-        }
-        }
-
-        echo '
-    <br>
-
-    <!-- ----------------------------------------------------------------------------------------------------------- -->
-
-            <footer>
-                <div class="nav-item"><a href="index.php">
-                    <p class="navbar-text">Reserveren</p>
-                </a></div>
-                <div class="nav-item">
-                    <p class="navbar-text">Locatie: Domberg</p>
-                </div>
-            </footer>
-        </body>
-
-        <script src="script.js"></script>';
-    }
-}
-}
-catch(PDOExeption $e) {
-    echo "Connection failed!";
-}
-?>
->>>>>>> Stashed changes

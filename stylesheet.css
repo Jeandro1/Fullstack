@@ -76,13 +76,9 @@ a:visited {
 /*bungalows styling and flex--------------------------------------------------------------------------------------------------------------*/
 
 
-.bungalows {
-    display: flex;
-    flex-direction: column;
-}
-
 .outlinepage {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     margin: 5%;
@@ -108,7 +104,7 @@ a:visited {
     margin-right: auto;
 }
 
-.container1 input {
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -125,11 +121,11 @@ a:visited {
     border-radius: 20%;
 }
 
-.container1:hover input~.checkmark {
+.container:hover input~.checkmark {
     background-color: #ccc;
 }
 
-.container1 input:checked~.checkmark {
+.container input:checked~.checkmark {
     background-color: blue;
 }
 
@@ -142,7 +138,7 @@ a:visited {
     display: none;
 }
 
-.container1 input:checked~.checkmark:after {
+.container input:checked~.checkmark:after {
     display: block;
 }
 
@@ -192,4 +188,77 @@ a:visited {
     font-size: 15px;
     font-family: "apercu", -apple-system, system, sans-serif;
     font-weight: bold;
+}
+
+.showtextprijs {
+    color: black;
+    font-weight: bold;
+    font-family: "apercu", -apple-system, system, sans-serif;
+    font-size: 15px;
+    text-align: right;
+    background-color: white;
+    padding-right: 3%;
+    padding-top: 2%;
+    margin: 0;
+}
+
+.showtextbent {
+    color: darkgrey;
+    font-weight: bold;
+    font-family: "apercu", -apple-system, system, sans-serif;
+    font-size: 10px;
+    text-align: right;
+    background-color: white;
+    padding-right: 3%;
+    padding-top: 2%;
+    margin: 0;
+}
+
+.showtextnaam {
+    color: black;
+    font-weight: bold;
+    font-family: "apercu", -apple-system, system, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    background-color: white;
+    padding-top: 2%;
+    padding-left: 3%;
+    margin: 0;
+}
+
+.showtexttenv {
+    color: grey;
+    font-weight: bold;
+    font-family: "apercu", -apple-system, system, sans-serif;
+    font-size: 10px;
+    text-align: left;
+    background-color: white;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    margin: 0;
+}
+
+.reserveerknop {
+    color: white;
+    font-weight: bold;
+    font-family: "apercu", -apple-system, system, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    background-color: cornflowerblue;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 20%;
+    border-radius: 0px 0px 30px 30px;
+    margin-top: 0;
+}
+
+.fotobungalow{
+    border-radius: 30px 30px 0px 0px;
+    margin: 0;
+}
+
+table {
+    border: none;
 }

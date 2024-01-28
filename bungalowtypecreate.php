@@ -11,6 +11,8 @@ if (isset($_POST['addType'])) {
     $newType = $_POST['newType'];
 
     $stmt = $conn->prepare("INSERT INTO Type (type) VALUES ('$newType')");
+    $autoincrement = $conn->prepare("ALTER TABLE Type AUTO_INCREMENT =1;");
+    $autoincrement->execute();
     $stmt->execute();
     echo "Nieuwe type toegevoegd!";
     $stmt->close();

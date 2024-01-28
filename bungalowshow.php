@@ -6,6 +6,14 @@ if(!isset($_SESSION["loggedin"])){
     header("location:login.php");
 }  
 
+$result = $conn->query("SELECT Bungalows.naam, Bungalows.prijs, Bungalows.foto, Type.type, GROUP_CONCAT(Voorzieningen.voorzieningen) as voorzieningen
+FROM Bungalows
+INNER JOIN Type ON Bungalows.idType = Type.idType
+LEFT JOIN BungalowVoorzieningen ON Bungalows.idBungalow = BungalowVoorzieningen.idBungalow
+LEFT JOIN Voorzieningen ON BungalowVoorzieningen.idVoorzieningen = Voorzieningen.idVoorzieningen
+GROUP BY Bungalows.idBungalow
+");
+
 ?>
 
 <!DOCTYPE html>
@@ -50,22 +58,26 @@ if(!isset($_SESSION["loggedin"])){
 <!-- ----------------------------------------------------------------------------------------------------------- -->
         
     <br>
-<?php
-    $result = $conn->query("SELECT * FROM Bungalows");
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-         //   echo $row['foto'] . '<br>';
-            echo $row['naam'] . '<br>';
-            echo $row['prijs'] . '<br>';
-            $resulttype = $conn->query("SELECT Type.type FROM Type INNER JOIN Bungalows ON Bungalows.idBungalow=idType;");
-                while ($row = $resulttype->fetch(PDO::FETCH_ASSOC)) {
-                   echo $row['type'] . '<br>';
-                }
-            $resultvoorzieningen = $conn->query("SELECT Voorzieningen.voorzieningen FROM Voorzieningen INNER JOIN BungalowsVoorzieningen ON idBungalow=idVoorzieningen;");
-                while ($row = $resultvoorzieningen->fetch(PDO::FETCH_ASSOC)) {
-                   echo $row['voorzieningen'] . '<br>';
-                }
-        }
-?>
+    <div class="outlinepage">
+    <?php if (isset($result) && $result->rowCount() > 0): ?>
+        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+              <table>
+                <th>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($row['foto']); ?>" width="600" class="fotobungalow">
+                    <p class="showtextprijs"><?= $row['prijs']; ?></p>
+                    <p class="showtextbent">Inclusief belasting en toeslagen</p>
+                    <p class="showtextnaam"><?= $row['naam']; ?></p>
+                    <p class="showtexttenv"><?= $row['type']; ?></p>
+                    <p class="showtexttenv"><?= $row['voorzieningen']; ?></p>
+                    <button class="reserveerknop">Reserveer</button>
+                </th>    
+              </table>
+                  
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>Geen bungalows gevonden.</p>
+    <?php endif; ?>
+    </div>  
     <br>
         
 <!-- ----------------------------------------------------------------------------------------------------------- -->
