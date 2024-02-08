@@ -36,16 +36,6 @@ GROUP BY Bungalows.idBungalow
                       <p class="navbar-text">Bungalow aanmaken</p>
                   </a></div>';
         }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowtypecreate.php">
-                      <p class="navbar-text">Bungalow type aanmaken</p>
-                  </a></div>';
-        }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowvoorzieningcreate.php">
-                      <p class="navbar-text">Bungalow voorziening aanmaken</p>
-                  </a></div>';
-        }
         ?>
         <div class="nav-item"><a href="bungalowshow.php">
                 <p class="navbar-text">Bungalows</p>
@@ -63,7 +53,7 @@ GROUP BY Bungalows.idBungalow
         <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
               <table>
                 <th>
-                    <img src="data:image/jpeg;base64,<?= base64_encode($row['foto']); ?>" width="600" class="fotobungalow">
+                    <img src="data:image/jpeg;base64,<?= base64_encode($row['foto']); ?>" width="600" height="400" class="fotobungalow">
                     <p class="showtextprijs"><?= $row['prijs']; ?></p>
                     <p class="showtextbent">Inclusief belasting en toeslagen</p>
                     <p class="showtextnaam"><?= $row['naam']; ?></p>

@@ -10,6 +10,8 @@ if($_SESSION["email"] !== "admin@admin.com"){
     header("location:account.php");
 }
 
+//online zetten
+
 if (isset($_POST['submit'])) {
     $naam = $_POST['naam'];
     $prijs = $_POST['prijs'];
@@ -45,6 +47,34 @@ if (isset($_POST['submit'])) {
     echo "Bungalow toegevoegd!";
 }
 
+//new type
+
+if (isset($_POST['addType'])) {
+
+    $newType = $_POST['newType'];
+
+    $stmt = $conn->prepare("INSERT INTO Type (type) VALUES ('$newType')");
+    $autoincrement = $conn->prepare("ALTER TABLE Type AUTO_INCREMENT =1;");
+    $autoincrement->execute();
+    $stmt->execute();
+    echo "Nieuwe type toegevoegd!";
+    $stmt->close();
+
+}
+
+//new voorziening
+
+if (isset($_POST['addVoorziening'])) {
+    $newVoorziening = $_POST['newVoorziening'];
+
+    $stmt = $conn->prepare("INSERT INTO Voorzieningen (voorzieningen) VALUES ('$newVoorziening')");
+    $autoincrement = $conn->prepare("ALTER TABLE Voorzieningen AUTO_INCREMENT =1;");
+    $autoincrement->execute();
+    $stmt->execute();
+    echo "Nieuwe voorziening toegevoegd!";
+    $stmt->close();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,16 +97,6 @@ if (isset($_POST['submit'])) {
                       <p class="navbar-text">Bungalow aanmaken</p>
                   </a></div>';
         }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowtypecreate.php">
-                      <p class="navbar-text">Bungalow type aanmaken</p>
-                  </a></div>';
-        }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowvoorzieningcreate.php">
-                      <p class="navbar-text">Bungalow voorziening aanmaken</p>
-                  </a></div>';
-        }
         ?>
         <div class="nav-item"><a href="bungalowshow.php">
                 <p class="navbar-text">Bungalows</p>
@@ -90,21 +110,22 @@ if (isset($_POST['submit'])) {
     
     <br>
 
-<form method="post" action="" enctype="multipart/form-data">
-    Naam: <input type="text" name="naam" required><br>
-    Prijs: <input type="text" name="prijs" required><br>
-    Foto: <input type="file" name="foto" accept="image/*" required><br>
+<div class="aanmaakpagina">
+
+<form class="formsborder" method="post" action="" enctype="multipart/form-data">
+    Naam: <br><input type="text" name="naam" required><br>
+    Prijs: <br><input type="text" name="prijs" required><br><br>
+    Foto: (Let op verhouding is 2:1)<br><input type="file" name="foto" accept="image/*" required><br><br>
 
     Type:
-    <select name="type">
-        <!-- Vul deze selectbox met de beschikbare types uit de Type-tabel -->
+    <br><select name="type">
         <?php
         $result = $conn->query("SELECT * FROM Type");
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             echo "<option value='" . $row['idType'] . "'>" . $row['type'] . "</option>";
         }
         ?>
-    </select><br>
+    </select><br><br>
 
     Voorzieningen:
     <br>
@@ -115,8 +136,20 @@ if (isset($_POST['submit'])) {
     }
     ?>
 
-    <input type="submit" name="submit" value="Toevoegen">
+    <br><input class="formsbutton" type="submit" name="submit" value="Toevoegen">
 </form>
+
+<form class="formsborder" method="post" action="">
+    Nieuw Type: <input type="text" name="newType" required>
+    <input class="formsbutton" type="submit" name="addType" value="Toevoegen">
+</form>
+
+<form class="formsborder" method="post" action="">
+    Nieuwe Voorziening: <input type="text" name="newVoorziening" required>
+    <input class="formsbutton" type="submit" name="addVoorziening" value="Toevoegen">
+    </form>
+
+</div>
     
         <br>
     

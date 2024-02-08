@@ -60,15 +60,17 @@ if(isset($_POST["login"])){
 
     <br>
 
-    <form action="login.php" method="post">
-    Email-adres <br><input type="text" name="email" value=""><br>
-    Wachtwoord <br><input type="password" name="wachtwoord" value=""><br>
-    <input type="submit" name="login" value="Log in">
-    </form>
+    <div class="formsborderacc">
+        <form action="login.php" method="post">
+            Email-adres <br><input type="text" name="email" value=""><br>
+            Wachtwoord <br><input type="password" name="wachtwoord" value=""><br>
+            <input class="formsbutton" type="submit" name="login" value="Log in">
+        </form>
 
-    <a href="register.php">
-    <p class="blacktext">Heb je nog geen account? Registreer je hier!</p>
-    </a>
+        <a href="register.php">
+            <p class="blacktext">Heb je nog geen account? Registreer je hier!</p>
+        </a>
+    </div>
 
     <br>
 

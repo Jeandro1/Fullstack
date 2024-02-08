@@ -44,16 +44,6 @@ if(isset($_POST["delete"])){
                       <p class="navbar-text">Bungalow aanmaken</p>
                   </a></div>';
         }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowtypecreate.php">
-                      <p class="navbar-text">Bungalow type aanmaken</p>
-                  </a></div>';
-        }
-        if($_SESSION["email"] == "admin@admin.com"){
-            echo '<div class="nav-item"><a href="bungalowvoorzieningcreate.php">
-                      <p class="navbar-text">Bungalow voorziening aanmaken</p>
-                  </a></div>';
-        }
         ?>
         <div class="nav-item"><a href="bungalowshow.php">
                 <p class="navbar-text">Bungalows</p>
@@ -67,19 +57,22 @@ if(isset($_POST["delete"])){
     
     <br>
 
-    <?php echo $_SESSION['email'];?>
+    <div class="formsborderacc">
 
-    <br><br>
+        <?php echo $_SESSION['email'];?>
 
-    <form action="account.php" method="post">
-        <input type="submit" name="logout" value="Uitloggen">
-    </form>
+        <br><br>
 
-    <br><br><br><br>
+        <form action="account.php" method="post">
+            <input class="formsbutton" type="submit" name="logout" value="Uitloggen">
+        </form>
 
-    <form action="account.php" method="post">
-        <input type="submit" name="delete" value="Delete account">
-    </form>
+        <br>
+
+        <form action="account.php" method="post">
+            <input class="formsbutton" type="submit" name="delete" value="Delete account">
+        </form>
+    </div>
 
     <br>
     

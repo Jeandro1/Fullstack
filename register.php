@@ -37,24 +37,26 @@ if(isset($_SESSION["loggedin"])){
 
   <br>
 
-  <form action="register.php" method="post">
-    Voornaam* <br><input type="text" name="voornaam" value=""><br>
-    Tussenvoegsel(s) <br><input type="text" name="tussenvoegsels" value=""><br>
-    Achternaam* <br><input type="text" name="achternaam" value=""><br>
-    Straat* <br><input type="text" name="straat" value=""><br>
-    Huisnummer* <br><input type="text" name="huisnummer" value=""><br>
-    Toevoeging <br><input type="text" name="toevoeging" value=""><br>
-    Plaats* <br><input type="text" name="plaats" value=""><br>
-    Email-adres* <br><input type="text" name="email" value=""><br>
-    Telefoonnummer* <br><input type="text" name="telefoonnummer" value=""><br>
-    Wachtwoord* <br><input type="password" name="wachtwoord" value=""><br>
-    Herhaal wachtwoord* <br><input type="password" name="herhaalWachtwoord" value=""><br>
-    <input type="submit" name="registreer" value="Registreer">
-  </form>
+  <div class="formsborderacc">
+    <form action="register.php" method="post">
+      Voornaam* <br><input type="text" name="voornaam" value=""><br>
+      Tussenvoegsel(s) <br><input type="text" name="tussenvoegsels" value=""><br>
+      Achternaam* <br><input type="text" name="achternaam" value=""><br>
+      Straat* <br><input type="text" name="straat" value=""><br>
+      Huisnummer* <br><input type="text" name="huisnummer" value=""><br>
+      Toevoeging <br><input type="text" name="toevoeging" value=""><br>
+      Plaats* <br><input type="text" name="plaats" value=""><br>
+      Email-adres* <br><input type="text" name="email" value=""><br>
+      Telefoonnummer* <br><input type="text" name="telefoonnummer" value=""><br>
+      Wachtwoord* <br><input type="password" name="wachtwoord" value=""><br>
+      Herhaal wachtwoord* <br><input type="password" name="herhaalWachtwoord" value=""><br>
+      <input class="formsbutton" type="submit" name="registreer" value="Registreer">
+    </form>
 
-  <a href="login.php">
-    <p class="blacktext">Heb je al een account? Log hier in!</p>
-  </a>
+    <a href="login.php">
+      <p class="blacktext">Heb je al een account? Log hier in!</p>
+    </a>
+  </div>
 
 <?php
 if(isset($_POST["registreer"])){
