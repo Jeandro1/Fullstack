@@ -39,6 +39,45 @@ if(isset($_SESSION["loggedin"])){
 
   <div class="formsborderacc">
     <form action="register.php" method="post">
+    <?php
+if(isset($_POST["registreer"])){
+  if(empty($_POST["voornaam"]) || empty($_POST["achternaam"]) || empty($_POST["straat"]) || empty($_POST["huisnummer"]) || empty($_POST["plaats"]) || empty($_POST["email"]) || empty($_POST["telefoonnummer"]) || empty($_POST["wachtwoord"]) || empty($_POST["herhaalWachtwoord"])){
+      echo "Alle velden moeten worden ingevuld!";
+  }
+  else{
+    $statement = $conn->prepare("SELECT * FROM Users WHERE email = :email");
+        $statement->execute(array('email' => $_POST["email"]));
+        $count = $statement->rowCount();
+        if($count > 0){
+          echo "Email-adres is al in gebruik!";
+        }
+        else{
+          if($_POST["herhaalWachtwoord"] === $_POST["wachtwoord"]){
+            $voornaam = $_REQUEST["voornaam"];
+            $tussenvoegels = $_REQUEST["tussenvoegels"];
+            $achternaam = $_REQUEST["achternaam"];
+            $straat = $_REQUEST["straat"];
+            $huisnummer = $_REQUEST["huisnummer"];
+            $toevoeging = $_REQUEST["toevoeging"];
+            $plaats = $_REQUEST["plaats"];
+            $email = $_REQUEST["email"];
+            $telefoonnummer = $_REQUEST["telefoonnummer"];
+            $wachtwoord = $_REQUEST["wachtwoord"];
+            $sqlregister = $conn->prepare("INSERT INTO Users (voornaam, tussenvoegsels, achternaam, straat, huisnummer, toevoeging, plaats, email, telefoonnummer, wachtwoord)
+                    VALUES ('$voornaam', '$tussenvoegsels', '$achternaam', '$straat', '$huisnummer', '$toevoeging', '$plaats', '$email', '$telefoonnummer', '$wachtwoord')");
+            $sqlregister->execute();
+            echo "New account created successfully";
+            sleep(1);
+            header("location:login.php");
+  
+        }
+        else{
+            echo "Wachtwoorden komen niet overeen!";
+        }
+        } 
+  }
+}
+?><br><br>
       Voornaam* <br><input type="text" name="voornaam" value=""><br>
       Tussenvoegsel(s) <br><input type="text" name="tussenvoegsels" value=""><br>
       Achternaam* <br><input type="text" name="achternaam" value=""><br>
@@ -57,38 +96,6 @@ if(isset($_SESSION["loggedin"])){
       <p class="blacktext">Heb je al een account? Log hier in!</p>
     </a>
   </div>
-
-<?php
-if(isset($_POST["registreer"])){
-  if(empty($_POST["voornaam"]) || empty($_POST["achternaam"]) || empty($_POST["straat"]) || empty($_POST["huisnummer"]) || empty($_POST["plaats"]) || empty($_POST["email"]) || empty($_POST["telefoonnummer"]) || empty($_POST["wachtwoord"]) || empty($_POST["herhaalWachtwoord"])){
-      echo "Alle velden moeten worden ingevuld!";
-  }
-  else{
-      if($_POST["herhaalWachtwoord"] === $_POST["wachtwoord"]){
-          $voornaam = $_REQUEST["voornaam"];
-          $tussenvoegels = $_REQUEST["tussenvoegels"];
-          $achternaam = $_REQUEST["achternaam"];
-          $straat = $_REQUEST["straat"];
-          $huisnummer = $_REQUEST["huisnummer"];
-          $toevoeging = $_REQUEST["toevoeging"];
-          $plaats = $_REQUEST["plaats"];
-          $email = $_REQUEST["email"];
-          $telefoonnummer = $_REQUEST["telefoonnummer"];
-          $wachtwoord = $_REQUEST["wachtwoord"];
-          $sqlregister = $conn->prepare("INSERT INTO Users (voornaam, tussenvoegsels, achternaam, straat, huisnummer, toevoeging, plaats, email, telefoonnummer, wachtwoord)
-                  VALUES ('$voornaam', '$tussenvoegsels', '$achternaam', '$straat', '$huisnummer', '$toevoeging', '$plaats', '$email', '$telefoonnummer', '$wachtwoord')");
-          $sqlregister->execute();
-          echo "New account created successfully";
-          sleep(1);
-          header("location:login.php");
-
-      }
-      else{
-          echo "Wachtwoorden komen niet overeen!";
-      }
-  }
-}
-?>
 
   <br>
 

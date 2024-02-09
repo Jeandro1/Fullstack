@@ -9,16 +9,6 @@ if(!isset($_SESSION["loggedin"])){
 if(isset($_POST["logout"])){
     session_destroy();
     header("location:login.php");
-}
-
-if(isset($_POST["delete"])){
-    $emaildelete = $_SESSION["email"];
-    $accountdelete = $conn->prepere("DELETE FROM Users WHERE email = '$emaildelete'");      
-    $accountdelete->execute();
-    echo "Account deleted successfully";
-    echo '<br>' . '<a href="register.php">Naar de inlogpagina</a>';
-    sleep(2);
-    header("location:login.php");
 }       
 
 ?>
@@ -72,6 +62,19 @@ if(isset($_POST["delete"])){
         <form action="account.php" method="post">
             <input class="formsbutton" type="submit" name="delete" value="Delete account">
         </form>
+
+        <?php
+
+if(isset($_POST["delete"])){
+    $emaildelete = $_SESSION["email"];
+    $accountdelete = $conn->prepere("DELETE FROM Users WHERE email = '$emaildelete'");      
+    $accountdelete->execute();
+    echo "Account deleted successfully";
+    echo '<br>' . '<a href="register.php">Naar de inlogpagina</a>';
+    sleep(2);
+    header("location:login.php");
+}
+        ?>
     </div>
 
     <br>

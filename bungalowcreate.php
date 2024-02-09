@@ -43,36 +43,26 @@ if (isset($_POST['submit'])) {
         $stmt = $conn->prepare("INSERT INTO BungalowVoorzieningen (idBungalow, idVoorzieningen) VALUES ('$bungalowID', '$voorzieningID')");
         $stmt->execute();
     }
-
-    echo "Bungalow toegevoegd!";
 }
 
 //new type
 
 if (isset($_POST['addType'])) {
-
     $newType = $_POST['newType'];
-
     $stmt = $conn->prepare("INSERT INTO Type (type) VALUES ('$newType')");
     $autoincrement = $conn->prepare("ALTER TABLE Type AUTO_INCREMENT =1;");
     $autoincrement->execute();
     $stmt->execute();
-    echo "Nieuwe type toegevoegd!";
-    $stmt->close();
-
 }
 
 //new voorziening
 
 if (isset($_POST['addVoorziening'])) {
     $newVoorziening = $_POST['newVoorziening'];
-
     $stmt = $conn->prepare("INSERT INTO Voorzieningen (voorzieningen) VALUES ('$newVoorziening')");
     $autoincrement = $conn->prepare("ALTER TABLE Voorzieningen AUTO_INCREMENT =1;");
     $autoincrement->execute();
     $stmt->execute();
-    echo "Nieuwe voorziening toegevoegd!";
-    $stmt->close();
 }
 
 ?>
@@ -137,16 +127,20 @@ if (isset($_POST['addVoorziening'])) {
     ?>
 
     <br><input class="formsbutton" type="submit" name="submit" value="Toevoegen">
+    <?php if (isset($_POST['submit'])) {echo "Bungalow toegevoegd!";} sleep(1); header("location:bungalowcreate.php")?> 
 </form>
 
 <form class="formsborder" method="post" action="">
     Nieuw Type: <input type="text" name="newType" required>
     <input class="formsbutton" type="submit" name="addType" value="Toevoegen">
+    <?php if (isset($_POST['addType'])) {echo "Type toegevoegd!";} sleep(1); header("location:bungalowcreate.php")?>
 </form>
 
 <form class="formsborder" method="post" action="">
     Nieuwe Voorziening: <input type="text" name="newVoorziening" required>
     <input class="formsbutton" type="submit" name="addVoorziening" value="Toevoegen">
+    <?php 
+    if (isset($_POST['addVoorziening'])) {echo "Voorziening toegevoegd!";} sleep(1); header("location:bungalowcreate.php")?>
     </form>
 
 </div>
